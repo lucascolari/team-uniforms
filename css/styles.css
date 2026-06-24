@@ -109,3 +109,6 @@ input,textarea,select{font-family:inherit;font-size:16px}
 .footer-in{display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap}
 .footer-web{font-weight:500}.footer-cp{font-size:13px;color:var(--gris)}
 @media (max-width:760px){.contacto-grid{grid-template-columns:1fr}}
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+.reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion: reduce){.reveal{opacity:1;transform:none}}

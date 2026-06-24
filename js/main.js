@@ -52,4 +52,17 @@ document.addEventListener('DOMContentLoaded', () => {
     actualizarProgreso();
     window.addEventListener('scroll', actualizarProgreso, {passive:true});
   }
+
+  // reveals al entrar en viewport
+  const reveals = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver((entradas) => {
+      entradas.forEach((e) => {
+        if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    }, {threshold:0.15, rootMargin:'0px 0px -10% 0px'});
+    reveals.forEach((el) => io.observe(el));
+  } else {
+    reveals.forEach((el) => el.classList.add('in'));
+  }
 });
