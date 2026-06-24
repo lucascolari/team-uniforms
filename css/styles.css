@@ -217,11 +217,11 @@ html{scrollbar-width:thin;scrollbar-color:var(--acento) var(--negro)}
 .faq-item p{color:var(--gris);font-size:16px;line-height:1.65;max-width:64ch;padding:0 0 28px}
 
 /* ── botón flotante de WhatsApp ── */
-.wa-float{position:fixed;right:clamp(16px,3vw,30px);bottom:clamp(16px,3vw,30px);z-index:900;display:flex;align-items:center;gap:0;height:58px;padding:0;border-radius:40px;background:#25D366;color:#fff;box-shadow:0 12px 34px rgba(0,0,0,.4);opacity:0;transform:translateY(22px) scale(.85);pointer-events:none;overflow:hidden;transition:opacity .35s var(--ease),transform .35s var(--ease),box-shadow .25s,padding .3s var(--ease)}
+.wa-float{position:fixed;right:clamp(16px,3vw,30px);bottom:clamp(16px,3vw,30px);z-index:900;display:flex;align-items:center;justify-content:center;gap:11px;width:60px;height:60px;padding:0;border-radius:40px;background:#25D366;color:#fff;box-shadow:0 12px 34px rgba(0,0,0,.4);opacity:0;transform:translateY(22px) scale(.85);pointer-events:none;overflow:hidden;white-space:nowrap;transition:opacity .35s var(--ease),transform .35s var(--ease),box-shadow .25s,width .35s var(--ease)}
 .wa-float.visible{opacity:1;transform:none;pointer-events:auto}
-.wa-float svg{width:30px;height:30px;fill:#fff;flex:0 0 58px;padding:14px}
-.wa-float .wa-tx{max-width:0;white-space:nowrap;font-weight:700;font-size:15px;opacity:0;transition:max-width .3s var(--ease),opacity .25s,padding .3s var(--ease)}
-.wa-float:hover{transform:translateY(-3px);box-shadow:0 18px 44px rgba(37,211,102,.5)}
-.wa-float:hover .wa-tx{max-width:170px;opacity:1;padding-right:24px}
-@media (max-width:560px){.wa-float{height:54px}.wa-float svg{flex-basis:54px;width:28px;height:28px}.wa-float:hover .wa-tx{max-width:0;opacity:0;padding-right:0}}
-@media (prefers-reduced-motion: reduce){.wa-float{transition:opacity .2s}}
+.wa-float svg{width:30px;height:30px;fill:#fff;flex:none}
+.wa-float .wa-tx{font-weight:700;font-size:15px;opacity:0;width:0;overflow:hidden;transition:opacity .25s,width .3s var(--ease)}
+.wa-float:hover{width:210px;transform:translateY(-3px);box-shadow:0 18px 44px rgba(37,211,102,.5)}
+.wa-float:hover .wa-tx{opacity:1;width:auto}
+@media (max-width:560px){.wa-float{width:56px;height:56px}.wa-float svg{width:28px;height:28px}.wa-float:hover{width:56px}.wa-float:hover .wa-tx{opacity:0;width:0}}
+@media (prefers-reduced-motion: reduce){.wa-float{transition:opacity .2s}.wa-float:hover{width:60px}}
