@@ -38,4 +38,18 @@ document.addEventListener('DOMContentLoaded', () => {
   heroEls.forEach((el, i) => {
     setTimeout(() => el.classList.add('in'), 120 + i * 130);
   });
+
+  // barra de progreso del proceso, ligada al scroll dentro de la sección
+  const proceso = document.getElementById('proceso');
+  const progBarra = document.getElementById('progBarra');
+  if (proceso && progBarra) {
+    const actualizarProgreso = () => {
+      const r = proceso.getBoundingClientRect();
+      const total = proceso.offsetHeight - window.innerHeight;
+      const avance = Math.min(Math.max(-r.top / total, 0), 1);
+      progBarra.style.width = (avance * 100).toFixed(1) + '%';
+    };
+    actualizarProgreso();
+    window.addEventListener('scroll', actualizarProgreso, {passive:true});
+  }
 });

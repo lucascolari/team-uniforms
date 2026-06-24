@@ -66,3 +66,13 @@ input,textarea,select{font-family:inherit;font-size:16px}
 .lista-prob li{background:var(--negro);padding:26px 24px;font-weight:500;font-size:clamp(15px,2vw,19px);color:#d6d6db}
 .cierre{font-weight:800;font-size:clamp(26px,4.5vw,52px);line-height:1.1;letter-spacing:-1px;max-width:18ch}
 @media (max-width:680px){.lista-prob{grid-template-columns:1fr}}
+.proceso{background:var(--negro);position:relative;height:230vh}
+.proceso-sticky{position:sticky;top:0;min-height:100vh;display:flex;align-items:center;padding:80px 0}
+.proceso em{font-style:italic;color:var(--periwinkle)}
+.parrafo--claro{color:#c9c9ce;margin:18px 0 0;max-width:54ch}
+.pasos{list-style:none;display:grid;grid-template-columns:repeat(3,1fr);gap:24px 18px;margin:48px 0 36px}
+.pasos li{font-weight:800;font-size:clamp(20px,3vw,34px);letter-spacing:-.5px;display:flex;flex-direction:column;gap:4px}
+.paso-n{font-size:13px;font-weight:700;letter-spacing:2px}
+.progreso{height:3px;background:rgba(255,255,255,.12);border-radius:2px;overflow:hidden}
+.progreso-barra{height:100%;width:0;background:var(--periwinkle);border-radius:2px;transition:width .1s linear}
+@media (max-width:680px){.pasos{grid-template-columns:1fr 1fr}.proceso{height:200vh}}
