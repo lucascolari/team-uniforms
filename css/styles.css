@@ -1,9 +1,9 @@
 :root{
   --negro:#0A0A0A; --blanco:#FFFFFF;
-  --gris:#6B6B70; --gris-claro:#E5E5E7; --gris-osc:#1C1C1E;
+  --gris:#6B6B70; --gris-claro:#E5E5E7;
   --periwinkle:#A5B0E1;
   --ancho:1200px; --pad:clamp(20px,5vw,64px);
-  --t-rapida:.25s; --t-media:.5s;
+  --t-rapida:.25s;
   --ease:cubic-bezier(.16,1,.3,1);
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -35,8 +35,8 @@ input,textarea,select{font-family:inherit;font-size:16px}
 .btn-cta:hover{background:var(--periwinkle);color:var(--negro) !important}
 .burger{display:none;flex-direction:column;gap:5px;padding:6px}
 .burger span{width:24px;height:2px;background:#fff;transition:transform var(--t-rapida),opacity var(--t-rapida)}
-.burger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
-.burger.open span:nth-child(2){transform:translateY(-0px) rotate(-45deg)}
+.burger.open span:nth-child(1){transform:translateY(3.5px) rotate(45deg)}
+.burger.open span:nth-child(2){transform:translateY(-3.5px) rotate(-45deg)}
 .nav-mob{display:none;flex-direction:column;background:rgba(10,10,10,.97);padding:8px var(--pad) 24px}
 .nav-mob.open{display:flex}
 .nav-mob button{text-align:left;color:rgba(255,255,255,.85);font-size:17px;font-weight:500;padding:15px 0;border-bottom:1px solid rgba(255,255,255,.08)}

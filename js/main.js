@@ -2,6 +2,7 @@
 'use strict';
 document.addEventListener('DOMContentLoaded', () => {
   console.log('Team Uniforms cargado');
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   const hdr = document.getElementById('hdr');
   const burger = document.getElementById('burger');
@@ -26,7 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const destino = document.querySelector(sel);
       if (!destino) return;
       e.preventDefault();
-      destino.scrollIntoView({behavior:'smooth', block:'start'});
+      destino.scrollIntoView({behavior: reduceMotion ? 'auto' : 'smooth', block:'start'});
       navMob.classList.remove('open');
       burger.classList.remove('open');
       burger.setAttribute('aria-expanded','false');
