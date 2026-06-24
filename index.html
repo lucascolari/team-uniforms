@@ -157,8 +157,46 @@
         </ul>
       </div>
     </section>
+
+    <section id="contacto" class="seccion contacto">
+      <div class="contenedor contacto-grid">
+        <div>
+          <p class="label reveal">Empecemos</p>
+          <h2 class="tit-xl reveal">Transformá tu idea en un producto listo para vender.</h2>
+          <a class="btn-wa reveal" href="https://wa.me/5492364341337?text=Hola%20Team%20Uniforms%2C%20quiero%20desarrollar%20una%20colecci%C3%B3n." target="_blank" rel="noopener">
+            Escribinos por WhatsApp
+          </a>
+          <div class="contacto-datos reveal">
+            <a href="https://instagram.com/teamuniformsarg" target="_blank" rel="noopener">@teamuniformsarg</a>
+            <a href="mailto:teamuniformsgroup@gmail.com">teamuniformsgroup@gmail.com</a>
+            <span>Buenos Aires, Argentina</span>
+          </div>
+        </div>
+        <form class="form reveal" name="contacto" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+          <input type="hidden" name="form-name" value="contacto">
+          <p class="oculto"><label>No llenar: <input name="bot-field"></label></p>
+          <label>Nombre<input type="text" name="nombre" required></label>
+          <label>Marca<input type="text" name="marca"></label>
+          <label>Tipo de proyecto
+            <select name="proyecto">
+              <option>Streetwear</option><option>Sportswear</option><option>Gymwear</option>
+              <option>Uniformes</option><option>Merchandising</option><option>Otro</option>
+            </select>
+          </label>
+          <label>Mensaje<textarea name="mensaje" rows="4" required></textarea></label>
+          <button type="submit" class="btn-enviar">Enviar consulta</button>
+        </form>
+      </div>
+    </section>
   </main>
-  <!-- footer (Task 11) -->
+
+  <footer class="footer">
+    <div class="contenedor footer-in">
+      <span class="logo-mono">TU</span>
+      <span class="footer-web acento">team-uniforms.com</span>
+      <span class="footer-cp">© 2026 Team Uniforms · Buenos Aires, ARG</span>
+    </div>
+  </footer>
   <script src="js/main.js" defer></script>
 </body>
 </html>

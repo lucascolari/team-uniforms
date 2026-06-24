@@ -92,3 +92,20 @@ input,textarea,select{font-family:inherit;font-size:16px}
 .cert-n{font-weight:800;font-size:clamp(18px,2.4vw,26px);letter-spacing:-.5px}
 .cert-d{font-weight:400;font-size:13px;color:var(--gris)}
 @media (max-width:760px){.certs{grid-template-columns:1fr 1fr}}
+.contacto-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,6vw,72px)}
+.btn-wa{display:inline-block;background:var(--periwinkle);color:var(--negro);font-weight:700;padding:16px 30px;border-radius:40px;margin:28px 0;transition:transform var(--t-rapida)}
+.btn-wa:hover{transform:translateY(-2px)}
+.contacto-datos{display:flex;flex-direction:column;gap:8px;color:var(--gris);font-size:15px}
+.contacto-datos a:hover{color:#fff}
+.form{display:flex;flex-direction:column;gap:16px}
+.form label{display:flex;flex-direction:column;gap:7px;font-size:13px;font-weight:500;color:var(--gris-claro)}
+.form input,.form select,.form textarea{background:transparent;border:1px solid rgba(255,255,255,.18);border-radius:8px;padding:12px 14px;color:#fff;transition:border-color var(--t-rapida)}
+.form input:focus,.form select:focus,.form textarea:focus{outline:none;border-color:var(--periwinkle)}
+.form select option{color:#000}
+.oculto{position:absolute;left:-9999px}
+.btn-enviar{background:#fff;color:var(--negro);font-weight:700;padding:15px;border-radius:8px;margin-top:6px;transition:opacity var(--t-rapida)}
+.btn-enviar:hover{opacity:.85}
+.footer{background:var(--negro);border-top:1px solid rgba(255,255,255,.08);padding:36px 0}
+.footer-in{display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap}
+.footer-web{font-weight:500}.footer-cp{font-size:13px;color:var(--gris)}
+@media (max-width:760px){.contacto-grid{grid-template-columns:1fr}}
