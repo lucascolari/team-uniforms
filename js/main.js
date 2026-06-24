@@ -116,6 +116,41 @@ document.addEventListener('DOMContentLoaded', () => {
     targetMap.forEach((b, s) => spy.observe(s));
   }
 
+  // ── contador animado de la banda de confianza ──
+  const statsNums = document.querySelectorAll('.stat-n[data-target]');
+  const animarNumero = (el) => {
+    const target = parseInt(el.dataset.target, 10) || 0;
+    const b = el.querySelector('b');
+    if (!b) return;
+    if (reduceMotion) { b.textContent = target; return; }
+    const dur = 1500, t0 = performance.now();
+    const tick = (now) => {
+      const p = Math.min((now - t0) / dur, 1);
+      const eased = 1 - Math.pow(1 - p, 3);
+      b.textContent = Math.round(eased * target);
+      if (p < 1) requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+  };
+  if (statsNums.length && 'IntersectionObserver' in window) {
+    const statObs = new IntersectionObserver((entradas) => {
+      entradas.forEach((e) => {
+        if (e.isIntersecting) { animarNumero(e.target); statObs.unobserve(e.target); }
+      });
+    }, {threshold:0.6});
+    statsNums.forEach((el) => statObs.observe(el));
+  } else {
+    statsNums.forEach((el) => { const b = el.querySelector('b'); if (b) b.textContent = el.dataset.target; });
+  }
+
+  // ── botón flotante de WhatsApp: aparece al pasar el hero ──
+  const waFloat = document.querySelector('.wa-float');
+  if (waFloat) {
+    const toggleWa = () => waFloat.classList.toggle('visible', window.scrollY > window.innerHeight * 0.6);
+    toggleWa();
+    window.addEventListener('scroll', toggleWa, {passive:true});
+  }
+
   // ── botones magnéticos (solo mouse, sin reduced-motion) ──
   if (finePointer && !reduceMotion) {
     document.querySelectorAll('.btn-cta, .btn-wa, .btn-enviar').forEach((btn) => {

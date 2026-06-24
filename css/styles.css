@@ -199,11 +199,11 @@ html{scrollbar-width:thin;scrollbar-color:var(--acento) var(--negro)}
 /* ── banda de confianza / stats ── */
 .stats{background:var(--negro);border-top:1px solid rgba(255,255,255,.08);border-bottom:1px solid rgba(255,255,255,.08)}
 .stats-in{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(255,255,255,.08)}
-.stat{background:var(--negro);padding:clamp(40px,6vw,68px) 28px;text-align:center;transition:background var(--t-rapida)}
+.stat{background:var(--negro);padding:clamp(28px,4.5vw,50px) 24px;text-align:center;transition:background var(--t-rapida)}
 .stat:hover{background:var(--negro-2)}
-.stat-n{font-weight:800;font-size:clamp(44px,7vw,88px);letter-spacing:-3px;line-height:1}
-.stat-n b{color:var(--acento-2);font-weight:800}
-.stat-d{font-weight:400;font-size:14px;color:var(--gris);margin-top:12px;letter-spacing:1px}
+.stat-n{font-weight:800;font-size:clamp(34px,5vw,62px);letter-spacing:-2px;line-height:1}
+.stat-n b,.stat-n .ss{color:var(--acento-2);font-weight:800}
+.stat-d{font-weight:400;font-size:13px;color:var(--gris);margin-top:11px;letter-spacing:1px}
 @media (max-width:680px){.stats-in{grid-template-columns:1fr}}
 
 /* ── faq ── */
@@ -215,3 +215,13 @@ html{scrollbar-width:thin;scrollbar-color:var(--acento) var(--negro)}
 .faq-item summary::after{content:"+";font-weight:300;color:var(--acento-2);font-size:30px;transition:transform var(--t-rapida) var(--ease)}
 .faq-item[open] summary::after{transform:rotate(45deg)}
 .faq-item p{color:var(--gris);font-size:16px;line-height:1.65;max-width:64ch;padding:0 0 28px}
+
+/* ── botón flotante de WhatsApp ── */
+.wa-float{position:fixed;right:clamp(16px,3vw,30px);bottom:clamp(16px,3vw,30px);z-index:900;display:flex;align-items:center;gap:0;height:58px;padding:0;border-radius:40px;background:#25D366;color:#fff;box-shadow:0 12px 34px rgba(0,0,0,.4);opacity:0;transform:translateY(22px) scale(.85);pointer-events:none;overflow:hidden;transition:opacity .35s var(--ease),transform .35s var(--ease),box-shadow .25s,padding .3s var(--ease)}
+.wa-float.visible{opacity:1;transform:none;pointer-events:auto}
+.wa-float svg{width:30px;height:30px;fill:#fff;flex:0 0 58px;padding:14px}
+.wa-float .wa-tx{max-width:0;white-space:nowrap;font-weight:700;font-size:15px;opacity:0;transition:max-width .3s var(--ease),opacity .25s,padding .3s var(--ease)}
+.wa-float:hover{transform:translateY(-3px);box-shadow:0 18px 44px rgba(37,211,102,.5)}
+.wa-float:hover .wa-tx{max-width:170px;opacity:1;padding-right:24px}
+@media (max-width:560px){.wa-float{height:54px}.wa-float svg{flex-basis:54px;width:28px;height:28px}.wa-float:hover .wa-tx{max-width:0;opacity:0;padding-right:0}}
+@media (prefers-reduced-motion: reduce){.wa-float{transition:opacity .2s}}
