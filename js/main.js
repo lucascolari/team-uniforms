@@ -32,4 +32,10 @@ document.addEventListener('DOMContentLoaded', () => {
       burger.setAttribute('aria-expanded','false');
     });
   });
+
+  // tipografía cinética del hero: entra en secuencia al cargar
+  const heroEls = document.querySelectorAll('.reveal-hero');
+  heroEls.forEach((el, i) => {
+    setTimeout(() => el.classList.add('in'), 120 + i * 130);
+  });
 });
