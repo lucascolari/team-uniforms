@@ -173,3 +173,45 @@ body::before{content:"";position:fixed;inset:0;z-index:9998;pointer-events:none;
 .reveal.in{opacity:1;transform:none}
 @media (prefers-reduced-motion: reduce){.reveal{opacity:1;transform:none}}
 .cv{content-visibility:auto;contain-intrinsic-size:auto 700px}
+
+/* ── scrollbar, foco y selección ── */
+html{scrollbar-width:thin;scrollbar-color:var(--acento) var(--negro)}
+::-webkit-scrollbar{width:9px;height:9px}
+::-webkit-scrollbar-track{background:var(--negro)}
+::-webkit-scrollbar-thumb{background:var(--acento);border-radius:5px}
+::-webkit-scrollbar-thumb:hover{background:var(--acento-2)}
+:focus-visible{outline:2px solid var(--acento-2);outline-offset:3px;border-radius:2px}
+::selection{background:var(--acento);color:#fff}
+
+/* ── nav activo (scrollspy) ── */
+.nav-dsk button.activo:not(.btn-cta){color:#fff}
+.nav-dsk button.activo:not(.btn-cta)::after{width:100%}
+
+/* ── numeración editorial ── */
+.sec-num{font-weight:700;font-size:11px;letter-spacing:2px;color:var(--acento-2);margin-right:12px}
+.seccion--blanco .sec-num{color:var(--acento)}
+
+/* ── hero con profundidad ── */
+.hero-bg-wm{position:absolute;right:-3%;bottom:-7%;font-weight:800;font-size:clamp(120px,30vw,440px);letter-spacing:-14px;line-height:.8;color:rgba(255,255,255,.022);pointer-events:none;user-select:none;z-index:0;white-space:nowrap}
+.hero::after{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(125% 80% at 50% 28%,transparent 42%,rgba(0,0,0,.6) 100%);z-index:0}
+.hero-in{position:relative;z-index:1}
+
+/* ── banda de confianza / stats ── */
+.stats{background:var(--negro);border-top:1px solid rgba(255,255,255,.08);border-bottom:1px solid rgba(255,255,255,.08)}
+.stats-in{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(255,255,255,.08)}
+.stat{background:var(--negro);padding:clamp(40px,6vw,68px) 28px;text-align:center;transition:background var(--t-rapida)}
+.stat:hover{background:var(--negro-2)}
+.stat-n{font-weight:800;font-size:clamp(44px,7vw,88px);letter-spacing:-3px;line-height:1}
+.stat-n b{color:var(--acento-2);font-weight:800}
+.stat-d{font-weight:400;font-size:14px;color:var(--gris);margin-top:12px;letter-spacing:1px}
+@media (max-width:680px){.stats-in{grid-template-columns:1fr}}
+
+/* ── faq ── */
+.faq-lista{margin-top:48px;border-top:1px solid rgba(255,255,255,.1)}
+.faq-item{border-bottom:1px solid rgba(255,255,255,.1)}
+.faq-item summary{list-style:none;cursor:pointer;padding:28px 0;display:flex;justify-content:space-between;align-items:center;gap:24px;font-weight:700;font-size:clamp(17px,2.4vw,25px);letter-spacing:-.5px;transition:color var(--t-rapida)}
+.faq-item summary::-webkit-details-marker{display:none}
+.faq-item summary:hover{color:var(--acento-2)}
+.faq-item summary::after{content:"+";font-weight:300;color:var(--acento-2);font-size:30px;transition:transform var(--t-rapida) var(--ease)}
+.faq-item[open] summary::after{transform:rotate(45deg)}
+.faq-item p{color:var(--gris);font-size:16px;line-height:1.65;max-width:64ch;padding:0 0 28px}

@@ -96,6 +96,26 @@ document.addEventListener('DOMContentLoaded', () => {
     reveals.forEach((el) => el.classList.add('in'));
   }
 
+  // ── scrollspy: resalta en el nav la sección visible ──
+  const navBtns = document.querySelectorAll('.nav-dsk button[data-target]');
+  const targetMap = new Map();
+  navBtns.forEach((b) => {
+    const s = document.querySelector(b.dataset.target);
+    if (s) targetMap.set(s, b);
+  });
+  if (targetMap.size && 'IntersectionObserver' in window) {
+    const spy = new IntersectionObserver((entradas) => {
+      entradas.forEach((e) => {
+        if (e.isIntersecting) {
+          navBtns.forEach((b) => b.classList.remove('activo'));
+          const activo = targetMap.get(e.target);
+          if (activo) activo.classList.add('activo');
+        }
+      });
+    }, {rootMargin:'-45% 0px -50% 0px', threshold:0});
+    targetMap.forEach((b, s) => spy.observe(s));
+  }
+
   // ── botones magnéticos (solo mouse, sin reduced-motion) ──
   if (finePointer && !reduceMotion) {
     document.querySelectorAll('.btn-cta, .btn-wa, .btn-enviar').forEach((btn) => {
