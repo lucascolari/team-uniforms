@@ -1,26 +1,26 @@
-// Team Uniforms — interacciones. Se completa en tareas siguientes.
+// Team Uniforms — interacciones (vanilla, sin dependencias).
 'use strict';
 document.addEventListener('DOMContentLoaded', () => {
-  console.log('Team Uniforms cargado');
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const finePointer = window.matchMedia('(pointer: fine)').matches;
 
   const hdr = document.getElementById('hdr');
   const burger = document.getElementById('burger');
   const navMob = document.getElementById('navMob');
 
-  // fondo del header al scrollear
+  // ── fondo del header al scrollear ──
   const onScroll = () => hdr.classList.toggle('sc', window.scrollY > 20);
   onScroll();
   window.addEventListener('scroll', onScroll, {passive:true});
 
-  // menú mobile
+  // ── menú mobile ──
   burger.addEventListener('click', () => {
     const abierto = navMob.classList.toggle('open');
     burger.classList.toggle('open', abierto);
     burger.setAttribute('aria-expanded', String(abierto));
   });
 
-  // scroll suave a secciones
+  // ── scroll suave a secciones ──
   document.querySelectorAll('[data-scroll]').forEach(el => {
     el.addEventListener('click', (e) => {
       const sel = el.dataset.target || el.getAttribute('href');
@@ -34,36 +34,99 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // tipografía cinética del hero: entra en secuencia al cargar
-  const heroEls = document.querySelectorAll('.reveal-hero');
-  heroEls.forEach((el, i) => {
-    setTimeout(() => el.classList.add('in'), 120 + i * 130);
-  });
+  // ── hero: tipografía cinética (se dispara al terminar el loader) ──
+  let heroListo = false;
+  const revealHero = () => {
+    if (heroListo) return;
+    heroListo = true;
+    document.querySelectorAll('.reveal-hero').forEach((el, i) => {
+      setTimeout(() => el.classList.add('in'), reduceMotion ? 0 : i * 130);
+    });
+  };
 
-  // barra de progreso del proceso, ligada al scroll dentro de la sección
+  // ── loader / intro de marca (se oculta solo por CSS; el JS solo coordina el hero) ──
+  const loader = document.getElementById('loader');
+  if (reduceMotion) {
+    if (loader) loader.remove();
+    revealHero();
+  } else {
+    // el hero entra justo cuando el telón empieza a subir
+    setTimeout(revealHero, 1300);
+    setTimeout(revealHero, 2600); // red de seguridad
+    if (loader) loader.addEventListener('animationend', () => loader.remove());
+  }
+
+  // ── barra de progreso + paso activo del proceso ──
   const proceso = document.getElementById('proceso');
   const progBarra = document.getElementById('progBarra');
+  const pasos = proceso ? proceso.querySelectorAll('.pasos li') : [];
   if (proceso && progBarra) {
     const actualizarProgreso = () => {
       const r = proceso.getBoundingClientRect();
       const total = proceso.offsetHeight - window.innerHeight;
       const avance = Math.min(Math.max(-r.top / total, 0), 1);
       progBarra.style.width = (avance * 100).toFixed(1) + '%';
+      if (pasos.length) {
+        const activo = Math.min(Math.floor(avance * pasos.length), pasos.length - 1);
+        pasos.forEach((li, i) => li.classList.toggle('activo', i <= activo));
+      }
     };
     actualizarProgreso();
     window.addEventListener('scroll', actualizarProgreso, {passive:true});
   }
 
-  // reveals al entrar en viewport
+  // ── reveals al entrar en viewport, escalonados por grupo ──
   const reveals = document.querySelectorAll('.reveal');
-  if ('IntersectionObserver' in window) {
+  reveals.forEach((el) => {
+    const sibs = [...el.parentElement.children].filter(c => c.classList.contains('reveal'));
+    el.dataset.delay = Math.min(sibs.indexOf(el), 6) * 80;
+  });
+  if ('IntersectionObserver' in window && !reduceMotion) {
     const io = new IntersectionObserver((entradas) => {
       entradas.forEach((e) => {
-        if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+        if (e.isIntersecting) {
+          e.target.style.transitionDelay = e.target.dataset.delay + 'ms';
+          e.target.classList.add('in');
+          io.unobserve(e.target);
+        }
       });
     }, {threshold:0.15, rootMargin:'0px 0px -10% 0px'});
     reveals.forEach((el) => io.observe(el));
   } else {
     reveals.forEach((el) => el.classList.add('in'));
+  }
+
+  // ── botones magnéticos (solo mouse, sin reduced-motion) ──
+  if (finePointer && !reduceMotion) {
+    document.querySelectorAll('.btn-cta, .btn-wa, .btn-enviar').forEach((btn) => {
+      btn.style.transition = 'transform .2s var(--ease)';
+      btn.addEventListener('mousemove', (e) => {
+        const r = btn.getBoundingClientRect();
+        const dx = e.clientX - (r.left + r.width / 2);
+        const dy = e.clientY - (r.top + r.height / 2);
+        btn.style.transform = `translate(${dx * 0.22}px, ${dy * 0.3}px)`;
+      });
+      btn.addEventListener('mouseleave', () => { btn.style.transform = ''; });
+    });
+  }
+
+  // ── parallax sutil en imágenes (efecto pleno con fotos reales) ──
+  const paraEls = document.querySelectorAll('[data-parallax]');
+  if (paraEls.length && !reduceMotion) {
+    let ticking = false;
+    const aplicarParallax = () => {
+      const vh = window.innerHeight;
+      paraEls.forEach((el) => {
+        const r = el.getBoundingClientRect();
+        if (r.bottom < 0 || r.top > vh) return;
+        const desplaz = ((r.top + r.height / 2) - vh / 2) * -0.05;
+        el.style.backgroundPositionY = `calc(50% + ${desplaz.toFixed(1)}px)`;
+      });
+      ticking = false;
+    };
+    window.addEventListener('scroll', () => {
+      if (!ticking) { window.requestAnimationFrame(aplicarParallax); ticking = true; }
+    }, {passive:true});
+    aplicarParallax();
   }
 });

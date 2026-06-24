@@ -17,11 +17,14 @@
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
+  <div id="loader">
+    <div class="loader-wm"><span>Team <b>Uniforms</b></span></div>
+    <div class="loader-line"></div>
+  </div>
   <header class="hdr" id="hdr">
     <div class="hdr-in contenedor">
       <a href="#hero" class="logo" data-scroll aria-label="Team Uniforms, inicio">
-        <span class="logo-mono">TU</span>
-        <span class="logo-tx">TEAM<br>UNIFORMS</span>
+        <span class="logo-wm">Team <b>Uniforms</b></span>
       </a>
       <nav class="nav-dsk">
         <button data-scroll data-target="#proceso">Proceso</button>
@@ -51,7 +54,7 @@
         </h1>
         <p class="hero-sub reveal-hero">colecciones para marcas que buscan crecer con estándares <span class="acento">internacionales.</span></p>
         <div class="hero-foot reveal-hero">
-          <span class="label">Scroll ↓</span>
+          <span class="hero-scroll label">Scroll</span>
           <span class="acento hero-web">team-uniforms.com</span>
         </div>
       </div>
@@ -59,7 +62,7 @@
 
     <section id="socio" class="seccion seccion--blanco bloque cv">
       <div class="contenedor bloque-grid">
-        <div class="bloque-img ph">[ foto: remera oversize ]</div>
+        <div class="bloque-img ph" data-parallax>[ foto: remera oversize ]</div>
         <div class="bloque-tx">
           <p class="label label--osc reveal">Qué somos</p>
           <h2 class="tit-xl reveal">Somos tu socio de producción.</h2>
@@ -79,9 +82,16 @@
           </ul>
           <p class="parrafo reveal">Te acompañamos en cada etapa del proceso.</p>
         </div>
-        <div class="bloque-img ph">[ foto: tech pack + swatches ]</div>
+        <div class="bloque-img ph" data-parallax>[ foto: tech pack + swatches ]</div>
       </div>
     </section>
+
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee-track">
+        <span>Desarrollo <b>·</b></span><span>Producción <b>·</b></span><span>Importación <b>·</b></span><span>Tech Packs <b>·</b></span><span>Muestras <b>·</b></span><span>Materiales <b>·</b></span><span>Calidad premium <b>·</b></span>
+        <span>Desarrollo <b>·</b></span><span>Producción <b>·</b></span><span>Importación <b>·</b></span><span>Tech Packs <b>·</b></span><span>Muestras <b>·</b></span><span>Materiales <b>·</b></span><span>Calidad premium <b>·</b></span>
+      </div>
+    </div>
 
     <section id="problema" class="seccion cv">
       <div class="contenedor">
@@ -193,8 +203,8 @@
 
   <footer class="footer">
     <div class="contenedor footer-in">
-      <span class="logo-mono">TU</span>
-      <span class="footer-web acento">team-uniforms.com</span>
+      <span class="logo-wm">Team <b>Uniforms</b></span>
+      <span class="footer-web">team-uniforms.com</span>
       <span class="footer-cp">© 2026 Team Uniforms · Buenos Aires, ARG</span>
     </div>
   </footer>
