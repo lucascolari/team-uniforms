@@ -87,3 +87,8 @@ input,textarea,select{font-family:inherit;font-size:16px}
 .moq-num{font-weight:800;font-size:clamp(64px,12vw,150px);letter-spacing:-3px;line-height:1}
 .moq-tit{font-weight:700;font-size:clamp(20px,3vw,30px)}
 @media (max-width:760px){.cat-grid{grid-template-columns:1fr}}
+.certs{list-style:none;display:grid;grid-template-columns:repeat(4,1fr);gap:1px;margin-top:48px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.08)}
+.certs li{background:var(--negro);padding:30px 22px;display:flex;flex-direction:column;gap:8px}
+.cert-n{font-weight:800;font-size:clamp(18px,2.4vw,26px);letter-spacing:-.5px}
+.cert-d{font-weight:400;font-size:13px;color:var(--gris)}
+@media (max-width:760px){.certs{grid-template-columns:1fr 1fr}}
