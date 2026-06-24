@@ -14,3 +14,6 @@ node_modules/
 
 # Temporales
 *.tmp
+
+# Scratch del flujo de trabajo (no es parte del sitio)
+.superpowers/
