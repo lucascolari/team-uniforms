@@ -56,6 +56,23 @@ document.addEventListener('DOMContentLoaded', () => {
     if (loader) loader.addEventListener('animationend', () => loader.remove());
   }
 
+  // ── prenda del hero: tilt 2.5D sutil con el mouse ──
+  const heroPrenda = document.querySelector('.hero-prenda');
+  const heroSec = document.getElementById('hero');
+  if (heroPrenda && heroSec && !reduceMotion && finePointer) {
+    let raf = null, nx = 0, ny = 0;
+    heroSec.addEventListener('mousemove', (e) => {
+      const r = heroSec.getBoundingClientRect();
+      nx = (e.clientX - r.left) / r.width - 0.5;
+      ny = (e.clientY - r.top) / r.height - 0.5;
+      if (!raf) raf = requestAnimationFrame(() => {
+        heroPrenda.style.transform = `rotateY(${(nx * 6).toFixed(2)}deg) rotateX(${(-ny * 6).toFixed(2)}deg)`;
+        raf = null;
+      });
+    });
+    heroSec.addEventListener('mouseleave', () => { heroPrenda.style.transform = ''; });
+  }
+
   // ── barra de progreso + paso activo del proceso ──
   const proceso = document.getElementById('proceso');
   const progBarra = document.getElementById('progBarra');

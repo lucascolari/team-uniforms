@@ -14,6 +14,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <link rel="preload" as="image" href="assets/render-web.png" fetchpriority="high">
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
@@ -45,21 +46,25 @@
   </header>
   <main>
     <section id="hero" class="hero">
-      <video class="hero-video" autoplay muted loop playsinline preload="auto" aria-hidden="true">
-        <source src="assets/hero.mp4" type="video/mp4">
-      </video>
       <span class="hero-bg-wm" aria-hidden="true">UNIFORMS</span>
       <div class="hero-in contenedor">
-        <p class="label hero-cap reveal-hero">ARG, Buenos Aires</p>
-        <h1 class="hero-tit">
-          <span class="reveal-hero">Desarrollamos,</span>
-          <span class="reveal-hero">producimos</span>
-          <span class="reveal-hero">e importamos</span>
-        </h1>
-        <p class="hero-sub reveal-hero">colecciones para marcas que buscan crecer con estándares <span class="acento">internacionales.</span></p>
-        <div class="hero-foot reveal-hero">
-          <span class="hero-scroll label">Scroll</span>
-          <span class="acento hero-web">team-uniforms.com</span>
+        <div class="hero-txt">
+          <p class="label hero-cap reveal-hero">ARG, Buenos Aires</p>
+          <h1 class="hero-tit">
+            <span class="reveal-hero">Desarrollamos,</span>
+            <span class="reveal-hero">producimos</span>
+            <span class="reveal-hero">e importamos</span>
+          </h1>
+          <p class="hero-sub reveal-hero">colecciones para marcas que buscan crecer con estándares <span class="acento">internacionales.</span></p>
+          <div class="hero-foot reveal-hero">
+            <span class="hero-scroll label">Scroll</span>
+            <span class="acento hero-web">team-uniforms.com</span>
+          </div>
+        </div>
+        <div class="hero-obj reveal-hero">
+          <div class="hero-float">
+            <img class="hero-prenda" src="assets/render-web.png" alt="Prenda premium de Team Uniforms suspendida en el espacio" width="1376" height="768" decoding="async">
+          </div>
         </div>
       </div>
     </section>
