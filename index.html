@@ -45,6 +45,9 @@
   </header>
   <main>
     <section id="hero" class="hero">
+      <video class="hero-video" autoplay muted loop playsinline preload="auto" aria-hidden="true">
+        <source src="assets/hero.mp4" type="video/mp4">
+      </video>
       <span class="hero-bg-wm" aria-hidden="true">UNIFORMS</span>
       <div class="hero-in contenedor">
         <p class="label hero-cap reveal-hero">ARG, Buenos Aires</p>
@@ -63,7 +66,7 @@
 
     <section id="socio" class="seccion seccion--blanco bloque cv">
       <div class="contenedor bloque-grid">
-        <div class="bloque-img ph" data-parallax>[ foto: remera oversize ]</div>
+        <div class="bloque-img" role="img" aria-label="Buzo hoodie premium en negro" style="background-image:url('assets/hoodie.png');background-color:#fff;background-size:contain;background-repeat:no-repeat;background-position:center"></div>
         <div class="bloque-tx">
           <p class="label label--osc reveal"><span class="sec-num">01</span>Qué somos</p>
           <h2 class="tit-xl reveal">Somos tu socio de producción.</h2>
@@ -91,7 +94,7 @@
           </ul>
           <p class="parrafo reveal">Te acompañamos en cada etapa del proceso.</p>
         </div>
-        <div class="bloque-img ph" data-parallax>[ foto: tech pack + swatches ]</div>
+        <div class="bloque-img" role="img" aria-label="Remera oversize en negro, frente y espalda" style="background-image:url('assets/mockup.png');background-color:#efeff0;background-size:contain;background-repeat:no-repeat;background-position:center"></div>
       </div>
     </section>
 
@@ -140,9 +143,8 @@
     <section id="categorias" class="seccion seccion--blanco cv">
       <div class="contenedor cat-grid">
         <div class="cat-fotos reveal">
-          <span class="ph"></span><span class="ph"></span><span class="ph"></span>
-          <span class="ph"></span><span class="ph"></span><span class="ph"></span>
-          <span class="ph"></span><span class="ph"></span><span class="ph"></span>
+          <div class="cat-img" role="img" aria-label="Hoodie negro premium" style="background-image:url('assets/hoodie.png');background-color:#fff"></div>
+          <div class="cat-img" role="img" aria-label="Remera oversize negra" style="background-image:url('assets/mockup.png');background-color:#efeff0"></div>
         </div>
         <div class="cat-tx">
           <p class="label label--osc reveal"><span class="sec-num">05</span>Categorías</p>
