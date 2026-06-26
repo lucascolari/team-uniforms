@@ -17,3 +17,7 @@ node_modules/
 
 # Scratch del flujo de trabajo (no es parte del sitio)
 .superpowers/
+
+# Docs internos del cliente (no publicar)
+/Correcciones*.pdf
+*Batch*.pdf
