@@ -168,20 +168,21 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('scroll', toggleWa, {passive:true});
   }
 
-  // ── video de la franja: carga y reproduce solo al entrar en viewport (lazy) ──
-  const lazyVideo = document.querySelector('.video-sec-v');
-  if (lazyVideo && 'IntersectionObserver' in window) {
+  // ── videos lazy: cargan y reproducen solo al entrar en viewport ──
+  const lazyVideos = document.querySelectorAll('.lazy-video');
+  if (lazyVideos.length && 'IntersectionObserver' in window) {
     const vObs = new IntersectionObserver((entradas) => {
       entradas.forEach((e) => {
+        const v = e.target;
         if (e.isIntersecting) {
-          if (!lazyVideo.src) lazyVideo.src = lazyVideo.dataset.src;
-          lazyVideo.play().catch(() => {});
+          if (!v.src) v.src = v.dataset.src;
+          v.play().catch(() => {});
         } else {
-          lazyVideo.pause();
+          v.pause();
         }
       });
     }, {threshold:0.25});
-    vObs.observe(lazyVideo);
+    lazyVideos.forEach((v) => vObs.observe(v));
   }
 
   // ── botones magnéticos (solo mouse, sin reduced-motion) ──
