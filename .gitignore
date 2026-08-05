@@ -24,3 +24,7 @@ node_modules/
 
 # Zips subidos por el cliente (no publicar)
 *.zip
+
+# Material del cliente sin procesar (se integra aparte)
+/Team-Uniforms-Pedidos.zip
+/.tmp-extract/
