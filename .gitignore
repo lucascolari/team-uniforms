@@ -21,3 +21,6 @@ node_modules/
 # Docs internos del cliente (no publicar)
 /Correcciones*.pdf
 *Batch*.pdf
+
+# Zips subidos por el cliente (no publicar)
+*.zip
