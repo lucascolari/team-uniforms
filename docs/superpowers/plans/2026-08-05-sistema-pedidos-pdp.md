@@ -430,18 +430,38 @@ git commit -m "Panel: login con Supabase Auth + guard de sesion"
 - [ ] **Step 1: Reemplazar el stub `cargarLista` en `admin.js`**
 
 ```js
+let pedidosCache = [];
+let mesSel = 'todos';
+const MESES = ['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
+const claveMes = (iso) => { const d = new Date(iso); return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}`; };
+const textoMes = (iso) => { const d = new Date(iso); return `${MESES[d.getMonth()]} ${d.getFullYear()}`; };
+
 async function cargarLista() {
   const lista = document.querySelector('#lista');
   const { data, error } = await supabase
     .from('pedidos')
-    .select('id, producto, codigo, estado, actualizado')
-    .order('actualizado', { ascending: false });
-
+    .select('id, producto, codigo, estado, creado')
+    .order('creado', { ascending: false });
   if (error) { lista.innerHTML = '<p class="error">No se pudieron cargar los pedidos.</p>'; return; }
-  if (!data.length) { lista.innerHTML = '<p style="color:#8b8b90">Todavía no hay pedidos. Creá el primero con “+ Nuevo pedido”.</p>'; return; }
+  pedidosCache = data || [];
+  pintarLista();
+}
 
-  lista.innerHTML = data.map((p) => {
-    const fecha = new Date(p.actualizado).toLocaleDateString('es-AR');
+function pintarLista() {
+  const lista = document.querySelector('#lista');
+  if (!pedidosCache.length) { lista.innerHTML = '<p style="color:#8b8b90">Todavía no hay pedidos. Creá el primero con “+ Nuevo pedido”.</p>'; return; }
+
+  // opciones del filtro por mes (a partir de las fechas reales)
+  const meses = new Map();
+  pedidosCache.forEach((p) => meses.set(claveMes(p.creado), textoMes(p.creado)));
+  const opciones = ['<option value="todos">Todos los meses</option>']
+    .concat([...meses].map(([c, t]) => `<option value="${c}"${c === mesSel ? ' selected' : ''}>${t}</option>`)).join('');
+
+  // filtrar por mes elegido
+  const filtrados = mesSel === 'todos' ? pedidosCache : pedidosCache.filter((p) => claveMes(p.creado) === mesSel);
+
+  const filas = filtrados.map((p) => {
+    const fecha = new Date(p.creado).toLocaleDateString('es-AR');
     const publicado = p.estado === 'publicado';
     return `<div class="fila" data-id="${p.id}">
       <div class="fila-info">
@@ -456,6 +476,13 @@ async function cargarLista() {
       </div>
     </div>`;
   }).join('');
+
+  lista.innerHTML = `<div class="barra-filtro">
+      <select id="filtro-mes">${opciones}</select>
+      <span class="conteo">${filtrados.length} pedido${filtrados.length === 1 ? '' : 's'}</span>
+    </div>${filas}`;
+
+  document.querySelector('#filtro-mes').onchange = (e) => { mesSel = e.target.value; pintarLista(); };
 }
 
 document.querySelector('#lista').addEventListener('click', async (e) => {
@@ -492,6 +519,9 @@ document.querySelector('#lista').addEventListener('click', async (e) => {
 - [ ] **Step 2: Agregar estilos de fila a `admin.css`**
 
 ```css
+.barra-filtro{display:flex;align-items:center;gap:14px;margin-bottom:18px}
+.barra-filtro select{background:#111114;border:1px solid #33343a;border-radius:8px;padding:10px 12px;color:#fff;font-size:14px}
+.conteo{font-size:13px;color:#8b8b90}
 .fila{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;background:#111114;border:1px solid #26272b;border-radius:10px;padding:16px 20px;margin-bottom:10px}
 .fila-info{display:flex;flex-direction:column;gap:4px}
 .fila-info span{font-size:12px;color:#8b8b90}
