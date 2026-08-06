@@ -2,7 +2,6 @@
 
 - **Fecha:** 2026-06-24
 - **Proyecto:** Landing premium para Team Uniforms
-- **Autor:** Lucas Scolari (con asistencia de Claude)
 - **Estado:** Aprobado para implementación
 
 ---
@@ -29,7 +28,7 @@ contactar (WhatsApp o formulario).
 ## 3. Enfoque técnico
 
 - **Stack:** HTML + CSS + JavaScript **vanilla**. Sin frameworks, sin build, sin
-  dependencias externas (más rápido = sensación premium, y acorde al nivel de Lucas).
+  dependencias externas (más rápido = sensación premium, y acorde al nivel del desarrollador).
 - **Organización en archivos separados** (un escalón por encima de los proyectos
   anteriores de un solo `index.html`):
 
@@ -145,10 +144,10 @@ Datos de contacto reales:
 - **Mobile-first**, totalmente responsive (el grueso del tráfico B2B llega desde el
   celular vía Instagram).
 - Imágenes optimizadas (formato `.webp` cuando se pueda).
-- `content-visibility: auto` en secciones para rendimiento (patrón que Lucas ya usa).
+- `content-visibility: auto` en secciones para rendimiento (patrón ya usado en el proyecto).
 - Meta tags SEO + Open Graph (para que el link se vea bien al compartirlo).
 
-## 9. Assets necesarios (Lucas exporta del PDF/cliente)
+## 9. Assets necesarios (el desarrollador exporta del PDF/cliente)
 
 - Logo Team Uniforms en **negro** y en **blanco** (SVG ideal, PNG sirve).
 - ~6-8 imágenes del deck: textura de tela del hero, remera oversize negra, flatlay de
@@ -158,7 +157,7 @@ Datos de contacto reales:
 
 ## 10. Publicación
 
-- **Repo privado** en GitHub (cliente = privado, según la receta de Lucas).
+- **Repo privado** en GitHub (cliente = privado, según la receta del desarrollador).
 - **Hosting: Netlify** conectado al repo → gratis, HTTPS automático, repo privado OK,
   dominio propio `team-uniforms.com` gratis, y **Netlify Forms** resuelve el formulario.
 - Se actualiza solo con cada `git push`.

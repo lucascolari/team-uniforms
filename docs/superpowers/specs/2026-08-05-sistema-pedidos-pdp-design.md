@@ -2,7 +2,6 @@
 
 - **Fecha:** 2026-08-05
 - **Proyecto:** Sistema de gestión de pedidos (Product Development Packs) para Team Uniforms
-- **Autor:** Lucas Scolari (con asistencia de Claude)
 - **Estado:** Aprobado para implementación
 - **Relación:** Feature nueva dentro del sitio existente `team-uniforms/` (ver
   `2026-06-24-team-uniforms-web-design.md`).

@@ -253,7 +253,7 @@ git commit -m "Header fijo con blur, navegación desktop/mobile y scroll suave"
 
 **Interfaces:**
 - Consumes: `.contenedor`, tokens.
-- Produces: `<section id="hero">`. La textura de fondo usa `assets/hero-bg.jpg` (placeholder hasta que Lucas exporte la imagen).
+- Produces: `<section id="hero">`. La textura de fondo usa `assets/hero-bg.jpg` (placeholder hasta exportar la imagen).
 
 - [ ] **Step 1: HTML del hero**
 
@@ -290,7 +290,7 @@ git commit -m "Header fijo con blur, navegación desktop/mobile y scroll suave"
 .reveal-hero.in{opacity:1;transform:none;transition:opacity .8s var(--ease),transform .8s var(--ease)}
 ```
 
-Cuando Lucas tenga la imagen: agregar `background-image` con `assets/hero-bg.jpg` en `.hero`
+Cuando se tenga la imagen: agregar `background-image` con `assets/hero-bg.jpg` en `.hero`
 (antes del `var(--negro)` de fallback).
 
 - [ ] **Step 3: Animación de entrada en `js/main.js`**
@@ -841,7 +841,7 @@ git commit -m "Pasada final: responsive, performance, SEO y config de Netlify"
 
 ## Reemplazo de imágenes (después del plan)
 
-Cuando Lucas exporte las fotos del deck, se reemplazan los placeholders `.ph` por
+Cuando se exporten las fotos del deck, se reemplazan los placeholders `.ph` por
 `background-image` reales (hero, prenda, tech pack, grilla de categorías) y se agregan
 `logo-blanco`/`logo-negro` y `assets/og.jpg`. Es una pasada aparte, una imagen por commit.
 
