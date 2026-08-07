@@ -33,6 +33,55 @@
         <button type="button" class="btn btn-ghost" id="add-pom">+ Agregar medida</button>
       </fieldset>
 
+      <fieldset>
+        <legend>Validation priorities (sec. 00)</legend>
+        <label>Validaciones (una por línea)<textarea id="f-validaciones" rows="4"></textarea></label>
+      </fieldset>
+
+      <fieldset>
+        <legend>Material principal (sec. 05)</legend>
+        <label>Performance target<textarea id="f-perf-target" rows="2"></textarea></label>
+        <label>Target fiber content</label>
+        <div id="fibras"></div>
+        <button type="button" class="btn btn-ghost" id="add-fibra">+ Agregar fibra</button>
+        <label>Nota de fibra<textarea id="f-fibra-nota" rows="2"></textarea></label>
+      </fieldset>
+
+      <fieldset>
+        <legend>Ingeniería de construcción (sec. 06)</legend>
+        <label>Subtítulo<input type="text" id="f-ing-subtitulo"></label>
+        <label>Frase crítica<textarea id="f-ing-critico" rows="2"></textarea></label>
+        <label>NO debe crearse por (una por línea)<textarea id="f-ing-no" rows="4"></textarea></label>
+        <label>SÍ debe lograrse por (una por línea)<textarea id="f-ing-si" rows="4"></textarea></label>
+      </fieldset>
+
+      <fieldset>
+        <legend>Development Notes (sec. 07)</legend>
+        <label>Notas (un párrafo por línea)<textarea id="f-notas" rows="4"></textarea></label>
+        <label>Cierre<textarea id="f-notas-cierre" rows="2"></textarea></label>
+      </fieldset>
+
+      <fieldset>
+        <legend>Comunicación a fábrica (sec. 08)</legend>
+        <div id="factory-lista"></div>
+        <button type="button" class="btn btn-ghost" id="add-factory">+ Agregar card</button>
+        <label>Overall Development Target<textarea id="f-factory-target" rows="2"></textarea></label>
+      </fieldset>
+
+      <fieldset>
+        <legend>Development Goal (sec. 09)</legend>
+        <label>Título<input type="text" id="f-obj-titulo"></label>
+        <label>Texto introductorio<textarea id="f-obj-texto" rows="3"></textarea></label>
+        <label>Lista (una por línea)<textarea id="f-obj-lista" rows="4"></textarea></label>
+        <label>Frase final<textarea id="f-obj-strong" rows="2"></textarea></label>
+      </fieldset>
+
+      <fieldset>
+        <legend>Development Sample Plan (sec. 10)</legend>
+        <div id="timeline-lista"></div>
+        <button type="button" class="btn btn-ghost" id="add-timeline">+ Agregar muestra</button>
+      </fieldset>
+
       <div id="zona-fotos"></div>
 
       <p id="estado-guardado" class="ok" hidden>Guardado ✔</p>
