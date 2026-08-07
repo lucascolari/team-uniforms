@@ -74,7 +74,7 @@ main>section:not(.hero),main>div{position:relative;z-index:1}
 .hero-obj{position:relative;display:flex;justify-content:center;align-items:center;perspective:1300px}
 .hero-obj::after{content:"";position:absolute;width:78%;height:70%;border-radius:50%;background:radial-gradient(circle,rgba(91,124,255,.18),transparent 65%);filter:blur(22px);z-index:-1}
 .hero-float{animation:flotar 7s ease-in-out infinite;will-change:transform}
-.hero-prenda{width:100%;max-width:720px;height:auto;display:block;transform-style:preserve-3d;will-change:transform;transition:transform .5s var(--ease);filter:drop-shadow(0 30px 55px rgba(0,0,0,.6))}
+.hero-prenda{width:100%;max-width:720px;height:auto;display:block;border-radius:12px;transform-style:preserve-3d;will-change:transform;transition:transform .5s var(--ease);filter:drop-shadow(0 30px 55px rgba(0,0,0,.6))}
 @keyframes flotar{0%,100%{transform:translateY(-9px)}50%{transform:translateY(9px)}}
 .hero-tit span{display:block}
 .hero-sub{font-weight:400;font-size:clamp(16px,2.2vw,25px);color:#c9c9ce;max-width:600px;margin-top:32px;line-height:1.35}
