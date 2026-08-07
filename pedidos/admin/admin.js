@@ -26,7 +26,7 @@ $('#login-form').addEventListener('submit', async (e) => {
     email: $('#email').value.trim(),
     password: $('#password').value,
   });
-  if (error) { err.textContent = 'Email o contraseña incorrectos.'; err.hidden = false; return; }
+  if (error) { err.textContent = error.message || 'No se pudo entrar.'; err.hidden = false; console.error('Login error:', error); return; }
   await iniciar();
 });
 
