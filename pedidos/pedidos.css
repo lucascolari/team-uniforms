@@ -34,3 +34,5 @@
 @media(max-width:560px){.technical-component--clean,.technical-component--pom{padding:10px}.pom-technical-layout{gap:36px}}
 @media print{.technical-component img{object-fit:contain!important}.pom-technical-layout{grid-template-columns:1fr 1fr}}
 .photos{grid-template-columns:1fr}
+
+[hidden]{display:none !important}
