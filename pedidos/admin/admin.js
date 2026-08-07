@@ -25,14 +25,18 @@ $('#login-form').addEventListener('submit', async (e) => {
   err.hidden = true;
   btn.disabled = true;
   btn.textContent = 'Entrando…';
-  const { error } = await supabase.auth.signInWithPassword({
+  const { data, error } = await supabase.auth.signInWithPassword({
     email: $('#email').value.trim(),
     password: $('#password').value,
   });
   btn.disabled = false;
   btn.textContent = 'Entrar';
-  if (error) { err.textContent = error.message || 'No se pudo entrar.'; err.hidden = false; console.error('Login error:', error); return; }
-  await iniciar();
+  console.log('[login]', error ? ('error: ' + error.message + ' / code: ' + (error.code || error.status)) : ('sesion: ' + !!(data && data.session)));
+  if (error) { err.textContent = error.message || 'No se pudo entrar.'; err.hidden = false; return; }
+  if (!data || !data.session) { err.textContent = 'Login OK pero sin sesión. Revisá que el usuario esté CONFIRMADO en Supabase (Auth → Users).'; err.hidden = false; return; }
+  loginSec.hidden = true;
+  panelSec.hidden = false;
+  await cargarLista();
 });
 
 $('#logout').addEventListener('click', async () => {
