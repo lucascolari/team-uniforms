@@ -21,11 +21,16 @@ async function requerirSesion() {
 $('#login-form').addEventListener('submit', async (e) => {
   e.preventDefault();
   const err = $('#login-error');
+  const btn = e.target.querySelector('button[type="submit"]');
   err.hidden = true;
+  btn.disabled = true;
+  btn.textContent = 'Entrando…';
   const { error } = await supabase.auth.signInWithPassword({
     email: $('#email').value.trim(),
     password: $('#password').value,
   });
+  btn.disabled = false;
+  btn.textContent = 'Entrar';
   if (error) { err.textContent = error.message || 'No se pudo entrar.'; err.hidden = false; console.error('Login error:', error); return; }
   await iniciar();
 });
