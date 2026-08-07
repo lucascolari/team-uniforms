@@ -242,10 +242,19 @@ function pintarDetalles() {
 
 /* ── Guardar ── */
 $('#guardar').onclick = async () => {
-  const payload = { ...leerForm(), actualizado: new Date().toISOString() };
-  const { error } = await supabase.from('pedidos').update(payload).eq('id', id);
-  if (error) { alert('No se pudo guardar.'); return; }
-  const ok = $('#estado-guardado'); ok.hidden = false; setTimeout(() => { ok.hidden = true; }, 1500);
+  const btn = $('#guardar');
+  btn.disabled = true; btn.textContent = 'Guardando…';
+  try {
+    const payload = { ...leerForm(), actualizado: new Date().toISOString() };
+    const { error } = await supabase.from('pedidos').update(payload).eq('id', id);
+    if (error) { alert('No se pudo guardar: ' + error.message); console.error('guardar error:', error); return; }
+    const ok = $('#estado-guardado'); ok.hidden = false; setTimeout(() => { ok.hidden = true; }, 1500);
+  } catch (e) {
+    alert('Error al guardar: ' + (e && e.message ? e.message : e));
+    console.error('guardar throw:', e);
+  } finally {
+    btn.disabled = false; btn.textContent = 'Guardar';
+  }
 };
 
 /* ── Carga inicial ── */
