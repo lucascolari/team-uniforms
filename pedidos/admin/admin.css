@@ -1,0 +1,47 @@
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Manrope,system-ui,sans-serif;background:#0A0A0A;color:#fff;min-height:100vh}
+
+/* Login */
+.login{min-height:100vh;display:grid;place-items:center;padding:24px}
+.login-card{background:#111114;border:1px solid #26272b;border-radius:12px;padding:32px;width:100%;max-width:380px;display:flex;flex-direction:column;gap:16px}
+.login-card h1{font-size:22px;margin-bottom:8px}
+.login-card label{display:flex;flex-direction:column;gap:6px;font-size:13px;color:#c9c9ce}
+.login-card input{background:#0A0A0A;border:1px solid #33343a;border-radius:8px;padding:12px;color:#fff;font-size:16px}
+.btn,.login-card button{background:#5B7CFF;color:#0A0A0A;font-weight:700;border:none;border-radius:8px;padding:12px 18px;cursor:pointer;text-decoration:none;display:inline-block;font-family:inherit;font-size:14px}
+.btn-ghost{background:transparent;color:#fff;border:1px solid #33343a}
+.btn[disabled]{opacity:.4;cursor:not-allowed}
+.error{color:#ff6b6b;font-size:13px}
+.ok{color:#5cd3a5}
+
+/* Panel */
+.panel{max-width:1000px;margin:0 auto;padding:32px 24px}
+.panel-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:28px;gap:16px;flex-wrap:wrap}
+.panel-top>div{display:flex;gap:10px}
+
+/* Filtro por mes */
+.barra-filtro{display:flex;align-items:center;gap:14px;margin-bottom:18px}
+.barra-filtro select{background:#111114;border:1px solid #33343a;border-radius:8px;padding:10px 12px;color:#fff;font-size:14px;font-family:inherit}
+.conteo{font-size:13px;color:#8b8b90}
+
+/* Filas de la lista */
+.fila{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;background:#111114;border:1px solid #26272b;border-radius:10px;padding:16px 20px;margin-bottom:10px}
+.fila-info{display:flex;flex-direction:column;gap:4px}
+.fila-info span{font-size:12px;color:#8b8b90}
+.fila-acc{display:flex;gap:8px;flex-wrap:wrap}
+.fila-acc .btn{font-size:13px;padding:8px 12px}
+
+/* Editor */
+.form-pedido{display:flex;flex-direction:column;gap:16px;max-width:720px}
+.form-pedido label{display:flex;flex-direction:column;gap:6px;font-size:13px;color:#c9c9ce}
+.form-pedido input,.form-pedido textarea{background:#111114;border:1px solid #33343a;border-radius:8px;padding:12px;color:#fff;font-size:16px;font-family:inherit}
+.form-pedido fieldset{border:1px solid #26272b;border-radius:10px;padding:16px}
+.form-pedido legend{padding:0 8px;color:#8b8b90;font-size:12px}
+.pom-row{display:flex;gap:8px;margin-bottom:8px}
+.pom-row input{flex:1}
+
+/* Fotos */
+.foto-campo{display:flex;flex-direction:column;gap:8px;margin-bottom:16px;font-size:13px;color:#c9c9ce}
+.foto-prev{max-width:180px;border-radius:8px;border:1px solid #26272b}
+.detalle-row{display:grid;grid-template-columns:auto 1fr 1fr auto;gap:8px;align-items:center;margin-bottom:10px}
+.detalle-row .foto-prev{max-width:90px}
+@media(max-width:640px){.detalle-row{grid-template-columns:1fr}}

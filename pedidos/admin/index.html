@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex,nofollow">
+  <title>Panel de pedidos — Team Uniforms</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+  <!-- Login -->
+  <section id="login" class="login" hidden>
+    <form id="login-form" class="login-card">
+      <h1>Panel de pedidos</h1>
+      <label>Email<input type="email" id="email" required autocomplete="username"></label>
+      <label>Contraseña<input type="password" id="password" required autocomplete="current-password"></label>
+      <button type="submit">Entrar</button>
+      <p id="login-error" class="error" hidden></p>
+    </form>
+  </section>
+
+  <!-- Panel (visible con sesión) -->
+  <section id="panel" class="panel" hidden>
+    <header class="panel-top">
+      <h1>Pedidos</h1>
+      <div>
+        <a class="btn" href="editor.html">+ Nuevo pedido</a>
+        <button class="btn btn-ghost" id="logout">Salir</button>
+      </div>
+    </header>
+    <div id="lista"></div>
+  </section>
+
+  <script type="module" src="admin.js"></script>
+</body>
+</html>

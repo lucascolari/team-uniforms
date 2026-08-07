@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex,nofollow">
+  <title>Editar pedido — Team Uniforms</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+  <section class="panel">
+    <header class="panel-top">
+      <h1>Editar pedido</h1>
+      <div>
+        <a class="btn btn-ghost" href="index.html">← Volver</a>
+        <button class="btn" id="guardar">Guardar</button>
+      </div>
+    </header>
+
+    <form id="form-pedido" class="form-pedido">
+      <label>Producto<input type="text" id="f-producto"></label>
+      <label>Código de producto<input type="text" id="f-codigo"></label>
+      <label>Titular / hero<textarea id="f-hero" rows="2"></textarea></label>
+      <label>Brief<textarea id="f-brief" rows="4"></textarea></label>
+      <label>Materiales (uno por línea)<textarea id="f-materiales" rows="4"></textarea></label>
+
+      <fieldset>
+        <legend>Tabla de medidas (POM)</legend>
+        <div id="poms"></div>
+        <button type="button" class="btn btn-ghost" id="add-pom">+ Agregar medida</button>
+      </fieldset>
+
+      <div id="zona-fotos"></div>
+
+      <p id="estado-guardado" class="ok" hidden>Guardado ✔</p>
+    </form>
+  </section>
+  <script type="module" src="editor.js"></script>
+</body>
+</html>

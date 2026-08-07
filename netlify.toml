@@ -8,6 +8,12 @@
   status = 404
   force = true
 
+# Links de pedidos: URL limpia -> la pagina de render (ANTES del catch-all)
+[[redirects]]
+  from = "/pedidos/:id"
+  to = "/pedidos/ver.html?id=:id"
+  status = 200
+
 [[redirects]]
   from = "/*"
   to = "/index.html"
