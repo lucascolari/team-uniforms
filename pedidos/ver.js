@@ -1,7 +1,12 @@
 import { supabase } from './supabase.js';
 
-const params = new URLSearchParams(location.search);
-const id = params.get('id');
+// El id puede venir por query (?id=) o por la ruta limpia /pedidos/<id>
+// (el redirect de Netlify es un rewrite: mantiene la ruta y no expone ?id=).
+let id = new URLSearchParams(location.search).get('id');
+if (!id) {
+  const m = location.pathname.match(/\/pedidos\/([^/]+)\/?$/);
+  if (m && m[1] !== 'ver.html') id = decodeURIComponent(m[1]);
+}
 
 function mostrarError() {
   document.querySelectorAll('body > *:not(#pedido-error):not(script)').forEach((el) => { el.hidden = true; });
